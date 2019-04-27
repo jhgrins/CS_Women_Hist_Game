@@ -53,7 +53,7 @@ background_image = pygame.image.load("stars.png").convert()
 
 
 def game_loop():
-    screen.blit(background_image,  [0, 0])
+
     char = character((screen_width * 0.6), (screen_height * 0.93), pygame.image.load('rpgs2.png'))
     exit = False
     while not exit:
@@ -75,6 +75,7 @@ def game_loop():
         char.move()
 
         screen.fill(white)
+        screen.blit(background_image, [0, 0])
         char.draw()
 
         char.check_out_frame()
