@@ -5,17 +5,20 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 win_tit = "Hist 201: Historical Women in Computer Science - Josette Grinslade"
-screen = pygame.display.set_mode((screen_width,screen_height))
+screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption(win_tit)
 
-black = (0,0,0)
-white = (255,255,255)
+black = (0, 0, 0)
+white = (255, 255, 255)
 
 clock = pygame.time.Clock()
 
 # Character Initialization
+
+
 class character:
-    width = 273
+
+    width = 45
     speed = 0
     x_change = 0
 
@@ -26,8 +29,8 @@ class character:
         self.x_change = 0
 
     def draw(self):
-        screen.blit(self.img, (self.x,self.y))
-        #screen.blit(pygame.transform.scale(villager_img, (800,600)), (0,0))
+        screen.blit(self.img, (self.x, self.y))
+
     def move(self):
         self.x += self.x_change
 
@@ -46,17 +49,15 @@ class character:
         elif self.x < 0:
             self.x = 0
 
-
-
-
+background_image = pygame.image.load("stars.png").convert()
 
 
 def game_loop():
-    char = character((screen_width * 0.25), (screen_height * 0.6), pygame.image.load('kirby.png'))
+    screen.blit(background_image,  [0, 0])
+    char = character((screen_width * 0.6), (screen_height * 0.93), pygame.image.load('rpgs2.png'))
     exit = False
-
-
     while not exit:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit = True
@@ -80,6 +81,7 @@ def game_loop():
 
         pygame.display.update()
         clock.tick(60)
+
 
 # actually running the game here
 game_loop()
