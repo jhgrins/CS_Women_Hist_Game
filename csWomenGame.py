@@ -140,6 +140,8 @@ def game_loop():
     gameOver = False
     #pygame.mixer.music.load('imperial.mp3')
     #pygame.mixer.music.play(0)
+    soundObj = pygame.mixer.Sound('imperial_march.wav')
+    soundObj.play()
     while not exit:
 
         for event in pygame.event.get():
@@ -197,11 +199,17 @@ def game_loop():
             game.shot_bad_guy(bill, hero)
             game.shot_bad_guy(elon, hero)
         else:
+
+
             game.message_display("You win! Ada and Grace Congratulate you!!", green, screen_width/2 - 200, 250)
             screen.blit(pygame.image.load('ada.png'),[(screen_width* 0.6) - 350, screen_height - 200])
             screen.blit(pygame.image.load('grace.png'),[(screen_width* 0.6) + 85, screen_height-185])
 
         if(game.score == 5):
+            if(not gameOver):
+                soundObj.stop()
+                pygame.mixer.music.load('Indiana_Jones.mp3')
+                pygame.mixer.music.play(0)
             gameOver = True
 
         pygame.display.update()
